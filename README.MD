@@ -10,7 +10,7 @@ $ sudo mount -t vboxsf d/Desktop d
 ```
 $ sudo docker run -d --name es -p 9200:9200 -v /home/ziaxdk/es/:/usr/share/elasticsearch/data/ ziaxdk/es
 $ sudo docker run -d --name node -e APP_PORT=3000 -p 3000:3000 --link es:es ziaxdk/node
-$ sudo docker run -d --name nginx -p 80:80 -p 443:443 --link es:es --link node:node ziaxdk/nginx
+$ sudo docker run -d --name nginx -p 80:80 -p 443:443 --link es:es --link node:node --log-driver=fluentd ziaxdk/nginx
 ```
 
 ## Build
