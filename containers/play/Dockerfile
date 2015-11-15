@@ -5,7 +5,6 @@ RUN apk --update add build-base ca-certificates ruby-dev \
 
 RUN echo 'gem: --no-document' >> /etc/gemrc
 RUN gem install fluentd
-RUN gem install fluent-plugin-parser
 RUN gem install fluent-plugin-elasticsearch
 
 RUN mkdir -p /fluentd

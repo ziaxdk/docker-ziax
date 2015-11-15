@@ -1,0 +1,18 @@
+curl -v -XPOST http://localhost:24244/docker.test -d 'json={"source": "stdout", "log": "185.97.215.100 - - [08/Nov/2015:09:12:06 +0000] \"GET / HTTP/1.1\" 304 0 \"-\" \"Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36\"", "container_id": "bd69710eaf52272b23c1b89b24b34f73fe9030013a3a93e575b5ec2ad1e39f92", "container_name": "/nginx"}'
+
+
+
+curl -v -XPOST http://localhost:24244/docker.test -d 'json={"source":"stdout","log":"80.167.80.144 - - [08/Nov/2015:19:50:35 +0000] \"GET /es/_search HTTP/1.1\" 401 596 \"-\" \"Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36\"","container_id":"bd69710eaf52272b23c1b89b24b34f73fe9030013a3a93e575b5ec2ad1e39f92","container_name":"/nginx"}'
+
+
+192.168.99.1 - - [11/Nov/2015:20:55:33 +0000] "GET / HTTP/1.1" 200 612 "-" "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36" "-"
+
+
+
+
+curl -XPOST http://localhost:24244/docker.test -d '{"container_name":"/nginx","source":"stdout","log":"192.168.99.1 - - [12/Nov/2015:21:08:00 +0000] \"GET / HTTP/1.1\" 304 0 \"-\" \"Mozilla/5.0 (Windows NT 6.3 WOW64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36\""}'
+
+curl -XPOST http://localhost:24244/docker.test -d '80.167.80.144 - - [08/Nov/2015:19:50:35 +0000] "GET /es/_search HTTP/1.1" 401 596 "-" "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36"'
+
+docker run -it --rm -v /d/docker-ziax/containers/play/:/fluentd/etc -p 24244:24244 -p 24224:24224 --link es:es ziaxdk/fluentd sh
+docker run -it --rm -v /d/docker-ziax/containers/play/:/fluentd/etc -p 24244:24244 -p 24224:24224 ziaxdk/fluentd sh
